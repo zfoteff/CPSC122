@@ -17,13 +17,15 @@ int my_strcmp(char*, char*);
 char* my_spy(char*, char*);
 
 int main(){
-  char* userString1[];
-  char* userString2[];
+  char* userString1;
+  char* userString2;
 
   cout<< "Enter line of text: ";
   cin>> userString1[];
   cout<< "Enter second line of text: ";
   cin>> userString2[];
+
+
 
 
 
@@ -34,10 +36,11 @@ int main(){
 
 int my_strcmp(char* str1, char* str2){
 
+  if(str1[])
 
 }
 
-char* my_spy(char* str1, char* str2){
+char* my_strcpy(char* str1, char* str2){
 
 
 }
