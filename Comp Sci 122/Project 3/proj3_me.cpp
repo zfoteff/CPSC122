@@ -93,9 +93,9 @@ int main(){
 }
 
 
-
+//String Compare
 int my_strcmp(char* str1, char* str2){
-  //
+  // Makes each string lowercase so they can be more easily compared
   for(int i = 0; i< str1.length(); i++){
     tolower(str1[i]);
   }
@@ -117,9 +117,9 @@ int my_strcmp(char* str1, char* str2){
   }
 }
 
+//String Copy
 char* my_strcpy(char* str1, char* str2, int size){
   for(int i = 0; i< size; i++){
     str2[i] = str[i];
   }
-
 }
