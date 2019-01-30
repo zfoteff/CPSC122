@@ -11,3 +11,7 @@ and calls function my_strcpy
 To Build: g++ strcmpTest.cpp -o strcpyTest
 To Execute: ./strcpyTest
 */
+
+int main(){
+  
+}
