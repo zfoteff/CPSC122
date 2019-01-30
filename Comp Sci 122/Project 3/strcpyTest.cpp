@@ -12,6 +12,31 @@ To Build: g++ strcmpTest.cpp -o strcpyTest
 To Execute: ./strcpyTest
 */
 
+#include <iostream>
+#include <cstring>
+
+void my_strcpy(char*, char*);
+
 int main(){
-  fASDF
+  char* userStr1, userStr2;
+  cout<< "Enter a sentence: ";
+  cin>> userStr1;
+
+  cout<< "Enter another sentence: ";
+  cin>> userStr2;
+
+  my_strcpy(userStr1, userStr2);
+
+  cout<<"Str 1:  "<<userStr1<<endl;
+  cout<<"Str 2:  "<<userStr2<<endl;
+
+  delete userStr1, userStr2;
+  return 0;
+}
+
+void my_strcpy(char* str1, char* str2){
+  for(int i = 0; i< strlen(str1); i++){
+    str2[i] = str1[i];
+  }
+  str2[i] = EOF;
 }
