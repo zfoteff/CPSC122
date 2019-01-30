@@ -119,7 +119,8 @@ int my_strcmp(char* str1, char* str2){
 
 //String Copy
 char* my_strcpy(char* str1, char* str2, int size){
-  for(int i = 0; i< size; i++){
+  for(int i = 0; i< strlen(str1); i++){
     str2[i] = str1[i];
   }
+  str[i] = '\0';
 }
