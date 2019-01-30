@@ -27,7 +27,7 @@ int main(){
   cout<< "Enter line of text: ";
   cin>> userString1;
   bool hasNums1; // will check if there are any numbers in the string
-  for(i = 0; i< userString1.length(); i++){
+  for(int i = 0; i< userString1.length(); i++){
     if(isalpha(userString1[i])){
       hasNums1 = false;
     }
@@ -42,7 +42,7 @@ int main(){
     cout<< "Please re-enter the string: ";
     cin>> userString1;
 
-    for(i = 0; i< userString1.length(); i++){
+    for(int i = 0; i< userString1.length; i++){
       if(isalpha(userString1[i])){
         hasNums1 = false;
       }
@@ -57,7 +57,7 @@ int main(){
   cout<< "Enter second line of text: ";
   cin>> userString2[];
   bool hasNums2;
-  for(i = 0; i< userString2.length(); i++){
+  for(i = 0; i< userString2.length; i++){
     if(isalpha(userString2[i])){
       hasNums2 = true;
     }
