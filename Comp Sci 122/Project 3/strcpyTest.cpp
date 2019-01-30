@@ -13,5 +13,5 @@ To Execute: ./strcpyTest
 */
 
 int main(){
-  
+  fASDF
 }
