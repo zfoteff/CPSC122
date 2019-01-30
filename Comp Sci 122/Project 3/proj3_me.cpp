@@ -27,7 +27,7 @@ int main(){
   cout<< "Enter line of text: ";
   cin>> userString1;
   bool hasNums1; // will check if there are any numbers in the string
-  for(int i = 0; i< userString1.length(); i++){
+  for(int i = 0; i< strlen(userString1); i++){
     if(isalpha(userString1[i])){
       hasNums1 = false;
     }
@@ -42,7 +42,7 @@ int main(){
     cout<< "Please re-enter the string: ";
     cin>> userString1;
 
-    for(int i = 0; i< userString1.length; i++){
+    for(int i = 0; i< strlen(userString1); i++){
       if(isalpha(userString1[i])){
         hasNums1 = false;
       }
@@ -55,9 +55,9 @@ int main(){
 
 //Sentence 2 -------------
   cout<< "Enter second line of text: ";
-  cin>> userString2[];
+  cin>> userString2;
   bool hasNums2;
-  for(i = 0; i< userString2.length; i++){
+  for(int i = 0; i< strlen(userString2); i++){
     if(isalpha(userString2[i])){
       hasNums2 = true;
     }
@@ -72,7 +72,7 @@ int main(){
     cout<< "Please re-enter the string: ";
     cin>> userString2;
 
-    for(i = 0; i< userString2.length(); i++){
+    for(int i = 0; i< strlen(userString2); i++){
       if(isalpha(userString2[i])){
         hasNums2 = false;
       }
@@ -96,10 +96,10 @@ int main(){
 //String Compare
 int my_strcmp(char* str1, char* str2){
   // Makes each string lowercase so they can be more easily compared
-  for(int i = 0; i< str1.length(); i++){
+  for(int i = 0; i< strlen(str1); i++){
     tolower(str1[i]);
   }
-  for(int i = 0; i< str2.lenth(); i++){
+  for(int i = 0; i< strlen(str2); i++){
     tolower(str2[i]);
   }
 
@@ -120,6 +120,6 @@ int my_strcmp(char* str1, char* str2){
 //String Copy
 char* my_strcpy(char* str1, char* str2, int size){
   for(int i = 0; i< size; i++){
-    str2[i] = str[i];
+    str2[i] = str1[i];
   }
 }
