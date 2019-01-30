@@ -14,6 +14,7 @@ To Execute: ./strcpyTest
 
 #include <iostream>
 #include <cstring>
+using namespace std;
 
 void my_strcpy(char*, char*);
 
@@ -35,7 +36,8 @@ int main(){
 }
 
 void my_strcpy(char* str1, char* str2){
-  for(int i = 0; i< strlen(str1); i++){
+  int i;
+  for(i = 0; i< strlen(str1); i++){
     str2[i] = str1[i];
   }
   str2[i] = EOF;
