@@ -19,7 +19,8 @@ using namespace std;
 void my_strcpy(char*, char*);
 
 int main(){
-  char* userStr1, userStr2;
+  char* userStr1;
+  char* userStr2;
   cout<< "Enter a sentence: ";
   cin>> userStr1;
 
