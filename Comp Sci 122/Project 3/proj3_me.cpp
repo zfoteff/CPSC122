@@ -94,28 +94,59 @@ int main(){
 
 
 //String Compare
+int my_strcmp(char*, char*);
+
+int main(int argc, char* argv[]){
+  char* userstr1 = argv[1];
+  char* userstr2 = argv[2];
+
+  int x = my_strcmp(userstr1, userstr2);
+
+  cout<<x<<endl;
+
+}
+
 int my_strcmp(char* str1, char* str2){
-  // Makes each string lowercase so they can be more easily compared
   for(int i = 0; i< strlen(str1); i++){
     tolower(str1[i]);
   }
   for(int i = 0; i< strlen(str2); i++){
     tolower(str2[i]);
   }
+  //These two for loops change all characters in the strings to lowercase so they can be compared more easily
 
 
   if(str1 == str2){
     return 0;
   }
 
-  else if(str1[0] > str2[0]){
+  //This is to check alphabetical order
+  //Will iterate through each character in each string till it finds a set where one is alphabetically greater
+  else if(str1[0] == str2[0]){
+    for(int i = 1; i< strlen(str1); i++){
+      if(str1[i] < str2[i]){
+        return -1;
+        break;
+      }
+
+      else if(str1[i] > str2[i]){
+        return 1;
+        break;
+      }
+    }
+  }
+
+  // If the character stored in index 0 of str1 has a value less than the value stored in index 0 of str2, that means it appears first alphabetically
+  else if(str1[0] < str2[0]){
     return -1;
   }
 
-  else{
+  // If the character stored in index 0 of str1 has a value greater than the value stored in index 0 of str2, that means it appears second alphabetically
+  else if(str1[0] > str2[0]){
     return 1;
   }
 }
+
 
 //String Copy
 char* my_strcpy(char* str1, char* str2, int size){

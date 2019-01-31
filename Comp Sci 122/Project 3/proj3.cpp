@@ -4,29 +4,21 @@ Team Member 1: Zac Foteff
 Team Member 2: None
 Submitted by: Zac Foteff
 GU Username: zfoteff
-File Name: strcmpTest.cpp
-Programs take user inputted character lists
-and calls function my_strcmp
+File Name: proj3.cpp
+File contains code for functions my_strcpy and my_strcmp
 
-To Build: g++ strcmpTest.cpp -o strcmpTest
-To Execute: ./strcmpTest "str1" "str2"
+To Build: g++ proj3.cpp -o proj3
+To Execute: ./proj3
 */
 
-#include <iostream>
-#include <cstring>
-using namespace std;
 
-int my_strcmp(char*, char*);
-
-int main(int argc, char* argv[]){
-  char* userstr1 = argv[1];
-  char* userstr2 = argv[2];
-
-  int x = my_strcmp(userstr1, userstr2);
-
-  cout<<x<<endl;
-
-}
+/*
+my_strcmp
+pre: user passes two c-strings
+post: returns 0 if the c-strings are the same
+      returns -1 if c-string 1 is first alphabetically
+      returns 1 if c-string 2 is first alphabetically
+*/
 
 int my_strcmp(char* str1, char* str2){
   for(int i = 0; i< strlen(str1); i++){
@@ -43,7 +35,7 @@ int my_strcmp(char* str1, char* str2){
   }
 
   //This is to check alphabetical order
-  //Will iterate through each character in each string till it finds a set where one is alphabetically greater  
+  //Will iterate through each character in each string till it finds a set where one is alphabetically greater
   else if(str1[0] == str2[0]){
     for(int i = 1; i< strlen(str1); i++){
       if(str1[i] < str2[i]){
@@ -68,3 +60,11 @@ int my_strcmp(char* str1, char* str2){
     return 1;
   }
 }
+
+
+/*
+my_strcpy
+pre: user passes 2 c-strings
+    str1's length is greater than str2's length by at least once
+post: returns memory address to copied c-string
+*/

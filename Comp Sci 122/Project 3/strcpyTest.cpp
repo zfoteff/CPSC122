@@ -16,30 +16,31 @@ To Execute: ./strcpyTest
 #include <cstring>
 using namespace std;
 
-void my_strcpy(char*, char*);
+char* my_strcpy(char*, char*);
 
 int main(){
-  char* userStr1;
-  char* userStr2;
+  const int MAX_SIZE = 100;
+
+  char* userStr1 = NULL;
+  char* userStr2 = NULL;
   cout<< "Enter a sentence: ";
-  cin>> userStr1;
+  cin.getline(userStr1, MAX_SIZE);
 
   cout<< "Enter another sentence: ";
-  cin>> userStr2;
+  cin.getline(userStr2, MAX_SIZE);
 
-  my_strcpy(userStr1, userStr2);
-
-  cout<<"Str 1:  "<<userStr1<<endl;
-  cout<<"Str 2:  "<<userStr2<<endl;
+  char* copy = my_strcpy(userStr1, userStr2);
+  cout<< "\nCopied sentence: "<<copy<<endl;
 
   delete userStr1, userStr2;
   return 0;
 }
 
-void my_strcpy(char* str1, char* str2){
+char* my_strcpy(char* str1, char* str2){
   int i;
-  for(i = 0; i< strlen(str1); i++){
+  for(i = 0; i< strlen(str2); i++){
     str2[i] = str1[i];
   }
-  str2[i] = EOF;
+  str2[i] = '\0';
+  return str2;
 }
