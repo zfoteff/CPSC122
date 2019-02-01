@@ -11,6 +11,12 @@ To Build: g++ proj3.cpp -o proj3
 To Execute: ./proj3
 */
 
+#include <iosteam>
+#include <cstring>
+using namespace std;
+
+int my_strcmp(char*, char*);
+char* my_strcmp(char*, char*);
 
 /*
 my_strcmp
@@ -19,7 +25,6 @@ post: returns 0 if the c-strings are the same
       returns -1 if c-string 1 is first alphabetically
       returns 1 if c-string 2 is first alphabetically
 */
-
 int my_strcmp(char* str1, char* str2){
  for(int i = 0; i< strlen(str1); i++){
   tolower(str1[i]);
@@ -34,8 +39,8 @@ int my_strcmp(char* str1, char* str2){
   return 0;
  }
 
- //This is to check alphabetical order
- //Will iterate through each character in each string till it finds a set where one is alphabetically greater
+ //Will iterate through each character in each string till it finds a set where one is
+ // alphabetically greater
  else if(str1[0] == str2[0]){
   for(int i = 1; i< strlen(str1); i++){
    if(str1[i] < str2[i]){
@@ -50,12 +55,14 @@ int my_strcmp(char* str1, char* str2){
   break;
  }
 
-  // If the character stored in index 0 of str1 has a value less than the value stored in index 0 of str2, that means it appears first alphabetically
+  // If the character stored in index 0 of str1 has a value less than the value stored
+  // in index 0 of str2, that means it appears first alphabetically
  else if(str1[0] < str2[0]){
   return -1;
  }
 
-  // If the character stored in index 0 of str1 has a value greater than the value stored in index 0 of str2, that means it appears second alphabetically
+  // If the character stored in index 0 of str1 has a value greater than
+  // the value stored in index 0 of str2, that means it appears second alphabetically
  else if(str1[0] > str2[0]){
   return 1;
  }
@@ -66,5 +73,15 @@ int my_strcmp(char* str1, char* str2){
 my_strcpy
 pre: user passes 2 c-strings
     str1's length is greater than str2's length by at least once
-post: returns memory address to copied c-string
+post: str2 is copied to str1 and returns memory address to copied c-string
 */
+char* my_strcpy(char* str1, char* str2){
+ int i;
+ for(i = 0; i< strlen(str1); i++){
+  str1[i] = str2[i];
+ }
+// adds escape character as soon as the str2 is copied into str1 so it stops
+// here instead of contining to empty indexes
+ str1[i] = '\0';
+ return str1;
+}
