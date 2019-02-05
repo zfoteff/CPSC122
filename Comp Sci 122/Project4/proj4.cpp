@@ -15,8 +15,9 @@ To Execute: ./proj3
 #include <iostream>
 #include <fstream>
 #include <cstring>
-
 using namespace std;
+
+char* sort(ifstream, int);
 
 int main(int argc, char* argv[]){
   char line[80];
@@ -48,3 +49,5 @@ int main(int argc, char* argv[]){
  return 0;
 
 }
+
+char* sort(ifstream )
