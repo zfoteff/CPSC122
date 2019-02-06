@@ -43,7 +43,7 @@ int main(int argc, char* argv[]){
     i++;
   }
 
-  selSort(lines, num_lines);
+  selSort(lines, num_lines); //Sorts each line of text from the input file in the lines char-string list
 
   i = 0;
   while(i < num_lines){
