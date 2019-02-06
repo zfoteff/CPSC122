@@ -5,7 +5,9 @@ Team Member 2: None
 Submitted by: Zac Foteff
 GU Username: zfoteff
 File Name: proj4.cpp
-File contains code for functions my_strcpy and my_strcmp
+User uses command line arguments, a selection sort algorithm, and file i/o
+to sort a file of c-strings into alphabetical order, then output the sorted
+list to a file
 
 To Build: g++ proj4.cpp -o proj4
 To Execute: ./proj4 INPUTFILE.in OUTPUTFILE.out numLines
@@ -17,15 +19,17 @@ To Execute: ./proj4 INPUTFILE.in OUTPUTFILE.out numLines
 #include <cstring>
 using namespace std;
 
-const int MAX_SIZE = 1000;
+const int MAX_SIZE = 1000; // acts as both the largest one line can be, and how
+                           // many things can be stores in the c-string array
 
 void selSort(char**, int);
 int my_strcmp(char*, char*);
 
 int main(int argc, char* argv[]){
-  char line[MAX_SIZE]; //creates char list that can contain 1000 elements
-  int num_lines = atoi(argv[3]); // takes the second argument (num lines) and changes it to an integer from a char strin
-  char** lines = new char*[num_lines];
+  char line[MAX_SIZE]; //creates char list that can contain up to 1000 elements
+  int numLines = atoi(argv[3]); // takes the second argument (num lines) and changes
+                                // it to an integer from a char string
+  char** lines = new char*[numLines];
 
   ifstream fin;
   ofstream fout;
@@ -33,20 +37,20 @@ int main(int argc, char* argv[]){
   fout.open(argv[2]);
 
   int i = 0;
-  while (i < num_lines){
-    fin.getline(line,80);
+  while (i < numLines){
+    fin.getline(line,MAX_SIZE); // stores each line into the line array
 
     int len = strlen(line) + 1;
     lines[i] = new char[len]; // creates new char string in the lines char string array at index i
-    strcpy(lines[i], line); // copies line into the lines array at index i
+    strcpy(lines[i], line);   // copies c-string stored in line into the lines array at index i
 
     i++;
   }
 
-  selSort(lines, num_lines); //Sorts each line of text from the input file in the lines char-string list
+  selSort(lines, numLines);   //Sorts each line of text from the input file in the lines char-string list
 
   i = 0;
-  while(i < num_lines){
+  while(i < numLines){
     fout << lines[i] << endl;
     i++;
   }
@@ -57,6 +61,13 @@ int main(int argc, char* argv[]){
 
 }
 
+
+/*
+Variation on selection sort algorithm using c-strings
+pre: user inputs c-string pointer array arr and it's size
+post: uses selection sort algorithm and my_strcmp to
+      re arrainge the contents of arr to alphabetical order
+*/
 void selSort(char* arr[], int size){
   for(int i = 0; i< size-1; i++){
     int min_idx = i;
@@ -64,7 +75,8 @@ void selSort(char* arr[], int size){
 
     for(int j = i+1; j< size; j++){
       int compare = my_strcmp(arr[i], arr[j]);
-      if(compare == 1){ // if the c-string in arr[j] comes before arr[i] alphabetically they will be swapped
+      if(compare == 1){ // if the c-string in arr[j] comes before arr[i]
+                        // alphabetically they will be swapped
         min_idx = j;
       }
     }
@@ -88,7 +100,8 @@ int my_strcmp(char* str1, char* str2){
  for(int i = 0; i< strlen(str2); i++){
   tolower(str2[i]);
  }
- //These two for loops change all characters in the strings to lowercase so they can be compared more easily
+ // These two for loops change all characters in the strings to lowercase so they
+ // can be compared more easily
 
 
  if(str1 == str2){
