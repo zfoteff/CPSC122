@@ -60,7 +60,7 @@ int main(int argc, char* argv[]){
 void selSort(char* arr[], int size){
   for(int i = 0; i< size-1; i++){
     int min_idx = i;
-    char dummy[MAX_SIZE];
+    char* dummy;
 
     for(int j = i+1; j< size; j++){
       int compare = my_strcmp(arr[i], arr[j]);
