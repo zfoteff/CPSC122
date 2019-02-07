@@ -1,7 +1,7 @@
 /*
 Class: CPSC 122-01
 Team Member 1: Zac Foteff
-Team Member 2: None 
+Team Member 2: None
 Submitted by: Zac Foteff
 GU Username: zfoteff
 File Name: proj4.cpp
@@ -74,7 +74,7 @@ void selSort(char* arr[], int size){
     char* dummy;
 
     for(int j = i+1; j< size; j++){
-      int compare = my_strcmp(arr[i], arr[j]);
+      int compare = my_strcmp(arr[min_idx], arr[j]);
       if(compare == 1){ // if the c-string in arr[j] comes before arr[i]
                         // alphabetically they will be swapped
         min_idx = j;
