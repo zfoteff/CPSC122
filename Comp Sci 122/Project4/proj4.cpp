@@ -108,8 +108,8 @@ int my_strcmp(char* str1, char* str2){
   return 0;
  }
 
- //Will iterate through each character in each string till it finds a set where one is
- // alphabetically greater
+ //Will iterate through each character in each string if the first characters of 
+ //the string are the same until it finds a set where one is alphabetically greater
  else if(str1[0] == str2[0]){
   for(int i = 1; i< strlen(str1); i++){
    if(str1[i] < str2[i]){
