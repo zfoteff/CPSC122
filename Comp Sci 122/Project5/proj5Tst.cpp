@@ -27,12 +27,13 @@ int main(){
   //Find test
   MyString str5("How far can a swallow carry a coconut?");
   str5.MyStrDisplay();
-  cout<<"Word: swallow \t Index: "<<str5.Find("swallow")<<endl;
+  cout<<"Word: swallow \t Index: "<<str5.Find("carry")<<endl;
 
-/*
-Find how to work delete method.
-*/
-
+  str1.~MyString();
+  str2->~MyString();
+  str3.~MyString();
+  str4.~MyString();
+  str5.~MyString();
 
   return 0;
 }

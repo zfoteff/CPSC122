@@ -42,7 +42,7 @@ int MyString::MyStrcmp(char const* strIn){
   }
 
   //if both start with same character
-  else if(str[0] = strIn[0]){
+  else if(str[0] == strIn[0]){
     return 0;
   }
 
@@ -59,8 +59,11 @@ int MyString::Find(char const* strIn){
     if(str[i] == strIn[0]){
       index = i;
       for(int j = 0; j < strlen(strIn); j++){
-        if(str[i+j] != strIn[j]){
-          return -1; // returns -1 if strIn isn't in str
+        if(str[i+j] == strIn[j]){
+          index = index; // returns -1 if strIn isn't in str
+        }
+        else{
+          index = -1;
         }
       }
     }
