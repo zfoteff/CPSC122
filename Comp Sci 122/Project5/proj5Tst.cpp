@@ -1,3 +1,16 @@
+/*
+Class: CPSC 122-01
+Team Member 1: Zac Foteff
+Team Member 2: None
+Submitted by: Zac Foteff
+GU Username: zfoteff
+File Name: proj5Tst.cpp
+Program imports custom class MyString and tests
+it's public functions
+To Build: g++ proj5Tst.cpp proj5.cpp
+To Execute: ./a.out
+*/
+
 #include "proj5.h"
 #include <iostream>
 using namespace std;
