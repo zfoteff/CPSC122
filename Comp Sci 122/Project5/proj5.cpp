@@ -29,7 +29,7 @@ int MyString::MyStrlen(){
 
 void MyString::MyStrcpy(char const* strIn){
   int i;
-  for(i = 0; i< str->MyStrlen(); i++){
+  for(i = 0; i< strlen(strIn); i++){
     str[i] = strIn[i];
   }
   str[i] = '\0';
@@ -53,16 +53,17 @@ int MyString::MyStrcmp(char const* strIn){
 }
 
 int MyString::Find(char const* strIn){
-  int i;
+  int index;
 
-  for(i = 0; i< str.MyStrlen(); i++){
+  for(int i = 0; i< strlen(str); i++){
     if(str[i] == strIn[0]){
-      for(int j = 0; j < strIn.MyStrlen(); j++){
-        if(str[i+j] != str[j]){
-          return -1;
+      index = i;
+      for(int j = 0; j < strlen(strIn); j++){
+        if(str[i+j] != strIn[j]){
+          return -1; // returns -1 if strIn isn't in str
         }
       }
     }
   }
-  return i; // returns index of substring
+  return index; // returns index of substring
 }
