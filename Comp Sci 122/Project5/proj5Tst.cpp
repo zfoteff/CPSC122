@@ -42,11 +42,5 @@ int main(){
   str5.MyStrDisplay();
   cout<<"Word: carry \t Index: "<<str5.Find("swallow")<<endl;
 
-  str1.~MyString();
-  str2->~MyString();
-  str3.~MyString();
-  str4.~MyString();
-  str5.~MyString();
-
   return 0;
 }

@@ -51,8 +51,6 @@ class MyString
    Post: if strIn is a substring of the instance of MyString, returns
          its starting positon, -1 otherwise
    */
-
-
    int Find(char const* strIn);
 
  private:

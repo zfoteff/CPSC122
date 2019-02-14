@@ -22,7 +22,7 @@ MyString::MyString(char const* strIn){
   strcpy(str,strIn);
 }
 
-MyString::~MyString(){
+MyString::~MyString(){ // is called automatically at end of program
   delete [] str; // deletes MyString object from memory
 }
 
@@ -71,7 +71,7 @@ int MyString::Find(char const* strIn){
   bool isInstance = false;
   char compStr[strlen(strIn)];
 
-  for(int i = 0; i< strlen(strIn); i++){
+  for(int i = 0;  i< strlen(strIn); i++){
     if(str[i] == strIn[0]){
       for(int j = 0; j< strlen(strIn); j++){
         if(strIn[j] != str[i+j]){
