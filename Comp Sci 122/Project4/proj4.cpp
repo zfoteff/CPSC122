@@ -25,7 +25,8 @@ const int MAX_SIZE = 1000; // acts as both the largest one line can be, and how
 void selSort(char**, int);
 int my_strcmp(char*, char*);
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[])
+{
   char line[MAX_SIZE]; //creates char list that can contain up to 1000 elements
   int numLines = atoi(argv[3]); // takes the second argument (num lines) and changes
                                 // it to an integer from a char string
@@ -37,7 +38,8 @@ int main(int argc, char* argv[]){
   fout.open(argv[2]);
 
   int i = 0;
-  while (i < numLines){
+  while (i < numLines)
+  {
     fin.getline(line,MAX_SIZE); // stores each line into the line array
 
     int len = strlen(line) + 1;
@@ -50,7 +52,8 @@ int main(int argc, char* argv[]){
   selSort(lines, numLines);   //Sorts each line of text from the input file in the lines char-string list
 
   i = 0;
-  while(i < numLines){
+  while(i < numLines)
+  {
     fout << lines[i] << endl;
     i++;
   }
@@ -68,12 +71,14 @@ pre: user inputs c-string pointer array arr and it's size
 post: uses selection sort algorithm and my_strcmp to
       re arrainge the contents of arr to alphabetical order
 */
-void selSort(char* arr[], int size){
+void selSort(char* arr[], int size)
+{
   for(int i = 0; i< size-1; i++){
     int min_idx = i;
     char* dummy;
 
-    for(int j = i+1; j< size; j++){
+    for(int j = i+1; j< size; j++)
+    {
       int compare = my_strcmp(arr[min_idx], arr[j]);
       if(compare == 1){ // if the c-string in arr[j] comes before arr[i]
                         // alphabetically they will be swapped
@@ -93,30 +98,31 @@ post: returns 0 if the c-strings are the same
       returns -1 if c-string 1 is first alphabetically
       returns 1 if c-string 2 is first alphabetically
 */
-int my_strcmp(char* str1, char* str2){
- for(int i = 0; i< strlen(str1); i++){
+int my_strcmp(char* str1, char* str2)
+{
+ for(int i = 0; i< strlen(str1); i++)
+ {
   tolower(str1[i]);
  }
- for(int i = 0; i< strlen(str2); i++){
+ for(int i = 0; i< strlen(str2); i++)
+ {
   tolower(str2[i]);
  }
  // These two for loops change all characters in the strings to lowercase so they
  // can be compared more easily
 
-
- if(str1 == str2){
-  return 0;
- }
-
  //Will iterate through each character in each string till it finds a set where one is
  // alphabetically greater
- else if(str1[0] == str2[0]){
-  for(int i = 1; i< strlen(str1); i++){
+ if(str1[0] == str2[0])
+ {
+  for(int i = 1; i< strlen(str1); i++)
+  {
    if(str1[i] < str2[i]){
     return -1;
     break;
    }
-   else if(str1[i] > str2[i]){
+   else if(str1[i] > str2[i])
+   {
     return 1;
     break;
    }
@@ -125,13 +131,17 @@ int my_strcmp(char* str1, char* str2){
 
   // If the character stored in index 0 of str1 has a value less than the value stored
   // in index 0 of str2, that means it appears first alphabetically
- else if(str1[0] < str2[0]){
+ else if(str1[0] < str2[0])
+ {
   return -1;
  }
 
   // If the character stored in index 0 of str1 has a value greater than
   // the value stored in index 0 of str2, that means it appears second alphabetically
- else if(str1[0] > str2[0]){
+ else if(str1[0] > str2[0])
+ {
   return 1;
  }
+
+ return 0; // default return value. Will return if the two strings are equal
 }
