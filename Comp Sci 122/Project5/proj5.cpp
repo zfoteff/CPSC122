@@ -67,36 +67,19 @@ int MyString::MyStrcmp(char const* strIn){
 }
 
 int MyString::Find(char const* strIn){
-  int index;
+  int index = -1;
   bool isInstance = false;
   char compStr[strlen(strIn)];
 
   for(int i = 0; i< strlen(strIn); i++){
-    if(str[i] = strIn[0]){
-      index = i;
-
+    if(str[i] == strIn[0]){
       for(int j = 0; j< strlen(strIn); j++){
-        compStr[j] = str[i+j];
-      }
-      for(int x = 0; x< strlen(compStr); x++){
-        if(compStr[x] == strIn[x]){
-          isInstance = true;
-        }
-        else{
-          isInstance = false;
+        if(strIn[j] != str[i+j]){
+          index = -1;
         }
       }
-    }
-
-    if(isInstance){
-      return index;
-    }
-    else{
-      return -1;
     }
   }
 
-
-
-  return -1;
+  return index;
 }
