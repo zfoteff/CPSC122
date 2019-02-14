@@ -14,6 +14,7 @@ To Execute: ./a.out
 #include "proj5.h"
 #include <cstring>
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 MyString::MyString(char const* strIn){
@@ -67,19 +68,35 @@ int MyString::MyStrcmp(char const* strIn){
 
 int MyString::Find(char const* strIn){
   int index;
+  bool isInstance = false;
+  char compStr[strlen(strIn)];
 
-  for(int i = 0; i< strlen(str); i++){
-    if(str[i] == strIn[0]){
+  for(int i = 0; i< strlen(strIn); i++){
+    if(str[i] = strIn[0]){
       index = i;
-      for(int j = 0; j < strlen(strIn); j++){
-        if(str[i+j] == strIn[j]){
-          index = index; // returns -1 if strIn isn't in str
+
+      for(int j = 0; j< strlen(strIn); j++){
+        compStr[j] = str[i+j];
+      }
+      for(int x = 0; x< strlen(compStr); x++){
+        if(compStr[x] == strIn[x]){
+          isInstance = true;
         }
         else{
-          index = -1;
+          isInstance = false;
         }
       }
     }
+
+    if(isInstance){
+      return index;
+    }
+    else{
+      return -1;
+    }
   }
-  return index; // returns index of substring
+
+
+
+  return -1;
 }
