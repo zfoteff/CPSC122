@@ -100,48 +100,40 @@ post: returns 0 if the c-strings are the same
 */
 int my_strcmp(char* str1, char* str2)
 {
- for(int i = 0; i< strlen(str1); i++)
+  int l1 = strlen(str1);
+  int l2 = strlen(str2);
+  int size;
+  if(l1 < l2)
+  {
+    size = l1;
+  }
+  else
+  {
+    size = l2;
+  }
+
+ for(int i = 0; i< size; i++)
  {
   tolower(str1[i]);
- }
- for(int i = 0; i< strlen(str2); i++)
- {
   tolower(str2[i]);
- }
- // These two for loops change all characters in the strings to lowercase so they
- // can be compared more easily
 
- //Will iterate through each character in each string till it finds a set where one is
- // alphabetically greater
- if(str1[0] == str2[0])
- {
-  for(int i = 1; i< strlen(str1); i++)
-  {
-   if(str1[i] < str2[i]){
+  if(str1[i] < str2[i]){
     return -1;
-    break;
-   }
-   else if(str1[i] > str2[i])
-   {
+  }
+  if(str1[i] > str2[i]){
     return 1;
-    break;
-   }
+  }
+
+  if(l1 == l2)
+  {
+    return 0;
+  }
+  if(l1 < l2)
+  {
+    return -1;
+  }
+  if(l1 > l2){
+    return 1;
   }
  }
-
-  // If the character stored in index 0 of str1 has a value less than the value stored
-  // in index 0 of str2, that means it appears first alphabetically
- else if(str1[0] < str2[0])
- {
-  return -1;
- }
-
-  // If the character stored in index 0 of str1 has a value greater than
-  // the value stored in index 0 of str2, that means it appears second alphabetically
- else if(str1[0] > str2[0])
- {
-  return 1;
- }
-
- return 0; // default return value. Will return if the two strings are equal
 }
