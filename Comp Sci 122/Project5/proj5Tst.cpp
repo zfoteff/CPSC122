@@ -40,7 +40,7 @@ int main(){
   //Find test
   MyString str5("How far can a swallow carry a coconut?");
   str5.MyStrDisplay();
-  cout<<"Word: carry \t Index: "<<str5.Find("swallow")<<endl;
+  cout<<"Word: carry \t Index: "<<str5.Find("far")<<endl;
 
   return 0;
 }
