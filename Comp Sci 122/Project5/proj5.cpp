@@ -50,32 +50,37 @@ void MyString::MyStrcpy(char const* strIn){
 }
 
 int MyString::MyStrcmp(char const* strIn){
-  // if str comes before strIn alphabetically
-  if(str[0] < strIn[0]){
-    return -1;
+  int l1 = strlen(str);
+  int l2 = strlen(strIn);
+
+  int size;
+  if(l1 < l2)
+    size = l1;
+  else
+    size = l2;
+
+  for(int i = 0; i< size; i++){
+    if(str[i] < strIn[i])
+      return -1;
+    if(str[i] > strIn[i])
+      return 1;
   }
 
-  //if both start with same character
-  else if(str[0] == strIn[0]){
+  if(l1 == l2)
     return 0;
-  }
-
-  //if strIn comes before str alphabetically
-  else if(str[0] > strIn[0]){
+  if(l1 < l2)
+    return -1;
+  if(l1 > l2)
     return 1;
-  }
-}
+ }
 
-int MyString::Find(const char* strIn)
-{
+int MyString::Find(const char* strIn){
   int i = 0;
   int j = 0;
   int index = -1;
 
-  while(str[i] != '\0')
-  {
-    if(strIn[j] == str[i])
-    {
+  while(str[i] != '\0'){
+    if(strIn[j] == str[i]){
       if(j == 0)
         index = i;
       if(strIn[j + 1] == '\0')
@@ -83,12 +88,10 @@ int MyString::Find(const char* strIn)
       j++;
     }
 
-    else //if the strings do not match, reset index to -1
-    {
+    else{ //if the strings do not match, reset index to -1
       j = 0;
       index = -1;
     }
-
     i++;
   }
   return index;

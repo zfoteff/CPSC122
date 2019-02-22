@@ -104,36 +104,25 @@ int my_strcmp(char* str1, char* str2)
   int l2 = strlen(str2);
   int size;
   if(l1 < l2)
-  {
     size = l1;
-  }
   else
-  {
     size = l2;
-  }
 
  for(int i = 0; i< size; i++)
  {
   tolower(str1[i]);
   tolower(str2[i]);
 
-  if(str1[i] < str2[i]){
+  if(str1[i] < str2[i])
     return -1;
-  }
-  if(str1[i] > str2[i]){
+  if(str1[i] > str2[i])
     return 1;
-  }
 
   if(l1 == l2)
-  {
     return 0;
-  }
   if(l1 < l2)
-  {
     return -1;
-  }
-  if(l1 > l2){
+  if(l1 > l2)
     return 1;
-  }
  }
 }
