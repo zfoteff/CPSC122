@@ -68,7 +68,7 @@ int MyString::MyStrcmp(char const* strIn){
 
 int MyString::Find(char const* strIn)
 {
-  int index = -1;
+  char compStr[strlen(strIn)];
   for(int i = 0; i< strlen(str) - strlen(strIn); i++)
   {
     if(str[i] == strIn[0])
@@ -76,14 +76,12 @@ int MyString::Find(char const* strIn)
       cout<<"Here i = "<<i<<" ";
       for(int j = 0; j< strlen(strIn); j++)
       {
-        if(str[i+j] == strIn[j]){
-          cout<<"x";
-          index = i;
-        }
-        else
-          index = -1;
+        compStr[j] = str[i+j];
       }
+
+      if(compStr == strIn)
+        return i;
     }
   }
-  return index;
+  return -1;
 }
