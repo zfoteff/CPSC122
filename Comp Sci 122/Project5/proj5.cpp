@@ -66,22 +66,30 @@ int MyString::MyStrcmp(char const* strIn){
   }
 }
 
-int MyString::Find(char const* strIn)
+int MyString::Find(const char* strIn)
 {
-  char compStr[strlen(strIn)];
-  for(int i = 0; i< strlen(str) - strlen(strIn); i++)
-  {
-    if(str[i] == strIn[0])
-    {
-      cout<<"Here i = "<<i<<" ";
-      for(int j = 0; j< strlen(strIn); j++)
-      {
-        compStr[j] = str[i+j];
-      }
+  int i = 0;
+  int j = 0;
+  int index = -1;
 
-      if(compStr == strIn)
-        return i;
+  while(str[i] != '\0')
+  {
+    if(strIn[j] == str[i])
+    {
+      if(j == 0)
+        index = i;
+      if(strIn[j + 1] == '\0')
+         break;
+      j++;
     }
+
+    else //if the strings do not match, reset index to -1
+    {
+      j = 0;
+      index = -1;
+    }
+
+    i++;
   }
-  return -1;
+  return index;
 }
