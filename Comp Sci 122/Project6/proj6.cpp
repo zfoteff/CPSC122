@@ -35,7 +35,11 @@ int List::GetLength() const{
 
 }
 */
+<<<<<<< HEAD
 void List::PutItemH(const itemType newItem){
+=======
+void List::PutItemH(const itemtype newItem){
+>>>>>>> 8325fcadd949b9ac217f8260b9ca3602d4a62df4
   //assigning variables to dummy node
   node* cur = new node;
   cur->item = newItem;
