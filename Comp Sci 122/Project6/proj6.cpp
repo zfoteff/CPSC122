@@ -45,11 +45,11 @@ void List::PutItemH(const itemType newItem){
   length++;
   cur = NULL;
 }
-/*
-void List::GetItemH() const{
 
+itemType List::GetItemH() const{
+  return head->item;
 }
-
+/*
 void List::DeleteItemH(){
 
 }
