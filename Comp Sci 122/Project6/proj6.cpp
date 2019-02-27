@@ -30,11 +30,11 @@ bool List::IsEmpty() const{
   }
   return false;
 }
-/*
-int List::GetLength() const{
 
+int List::GetLength() const{
+  return length;
 }
-*/
+
 void List::PutItemH(const itemType newItem){
   //assigning variables to dummy node
   node* cur = new node;
@@ -55,7 +55,7 @@ void List::DeleteItemH(){
   cur = head->next; // cur = node pointed to by next
   delete head; // head becomes null
   head = cur; // head is set to cur, all pointers start at cur
-  cur = NULL; 
+  cur = NULL;
   length--;
 }
 
