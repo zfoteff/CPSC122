@@ -21,10 +21,9 @@ int main(){
   List* myList1 = new List;
   List* myList2 = new List;
 
-  int x = 0;
-
   //Test 1: populates the list with the letters 0,1,2,3,4 and outputs them in the other of: 4.3.2.1.0
-  cout<<"Test 1 -------------------------------------"<<endl;
+  cout<<"Test 1 -------------------------------"<<endl;
+  int x = 0;
   while(x <= MAX_SIZE){
     myList1->PutItemH(x);
     x++;
@@ -32,7 +31,7 @@ int main(){
   myList1->Print();
 
   //Test 2: Causes contents of list to be listed in reverse order by using another list
-  cout<<"\nTest 2 -------------------------------------"<<endl;
+  cout<<"\nTest 2 -------------------------------"<<endl;
   while(!myList1->IsEmpty()){
     myList2->PutItemH(myList1->GetItemH());
     myList1->DeleteItemH();
@@ -41,7 +40,7 @@ int main(){
   myList2->Print();
 
   //Test 3: Deletes 2 items from reverse list and displays list
-  cout<<"\nTest 3 -------------------------------------"<<endl;
+  cout<<"\nTest 3 -------------------------------"<<endl;
   myList2->DeleteItemH();
   myList2->DeleteItemH();
   myList2->Print();
