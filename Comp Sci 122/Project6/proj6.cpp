@@ -47,13 +47,18 @@ void List::PutItemH(const itemType newItem){
 }
 
 itemType List::GetItemH() const{
-  return head->item;
+  return head->item; // returns item stored in head node
 }
-/*
-void List::DeleteItemH(){
 
+void List::DeleteItemH(){
+  node* cur = new node;
+  cur = head->next; // cur = node pointed to by next
+  delete head; // head becomes null
+  head = cur; // head is set to cur, all pointers start at cur
+  cur = NULL; 
+  length--;
 }
-*/
+
 void List::Print() const{
   node* cur = new node;
   cur = head;
