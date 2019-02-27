@@ -53,8 +53,12 @@ void List::GetItemH() const{
 void List::DeleteItemH(){
 
 }
-
-void List::Print() const{
-
-}
 */
+void List::Print() const{
+  node* cur = new node;
+  cur = head;
+  while(cur != NULL){
+    cout<<cur->item<<endl; // output item stored in cur node
+    cur = cur->next; //sets cur equal to the node it points to/ next node
+  }
+}
