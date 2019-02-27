@@ -5,8 +5,8 @@ Team Member 2: None
 Submitted by: Zac Foteff
 GU Username: zfoteff
 File Name: proj6.cpp
-Program defines a Class named MyString.
-Defines public functions to be used in proj6Tst.cpp
+Program defines a Class List which is an example of a singly linked list
+File defines public functions to be used in proj6Tst.cpp
 To Build: g++ proj6.cpp proj6Tst.cpp
 To Execute: ./a.out
 */
@@ -54,6 +54,7 @@ void List::DeleteItemH(){
   node* cur = new node;
   cur = head->next; // cur = node pointed to by next
   delete head; // head becomes null
+
   head = cur; // head is set to cur, all pointers start at cur
   cur = NULL;
   length--;
