@@ -15,6 +15,8 @@ To Execute: ./a.out
 #include <iostream>
 using namespace std;
 
+const int MAX_SIZE = 4;
+
 int main(){
   List* myList1 = new List;
   List* myList2 = new List;
@@ -23,7 +25,7 @@ int main(){
 
   //Test 1: populates the list with the letters 0,1,2,3,4 and outputs them in the other of: 4.3.2.1.0
   cout<<"Test 1 -------------------------------------"<<endl;
-  while(x <= 4){
+  while(x <= MAX_SIZE){
     myList1->PutItemH(x);
     x++;
   }
@@ -31,7 +33,7 @@ int main(){
 
   //Test 2: Causes contents of list to be listed in reverse order by using another list
   cout<<"\nTest 2 -------------------------------------"<<endl;
-  while(x > 0){
+  while(!myList1->IsEmpty()){
     myList2->PutItemH(myList1->GetItemH());
     myList1->DeleteItemH();
     x--;
