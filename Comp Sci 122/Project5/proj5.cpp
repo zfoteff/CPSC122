@@ -31,14 +31,11 @@ void MyString::MyStrDisplay(){
 }
 
 int MyString::MyStrlen(){
-  char comp;
-  int i;
-
-  for(i = 0; comp != '\0'; i++){
-    comp = str[i];
+  int x = 0;
+  while(str[x] != '\0'){
+    x++;
   }
-
-  return i;
+  return x;
 }
 
 void MyString::MyStrcpy(char const* strIn){
