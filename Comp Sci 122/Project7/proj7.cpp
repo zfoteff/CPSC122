@@ -22,7 +22,8 @@ List2::List2(){
 
 List2::List2(List2* lst){
   length = lst->GetLength();
-  //head = lst->GetItemH(); // ??
+  head = lst->head;
+  tail = lst->tail;
 }
 
 List2::~List2(){
@@ -40,16 +41,23 @@ int List2::GetLength() const{
   return length;
 }
 
-void List2::PutItemT( itemType newItem){
+void List2::PutItemT(itemType newItem){
   //assigning variables to dummy node
   node* cur = new node;
+  node* oldT = tail;
   cur->item = newItem;
   cur->next = NULL;
 
-  //sets tail node's next pointer to cur = to cur node
-  tail->next = cur;
+  if(length == 0){
+    head = cur;
+    tail = cur;
+    length++;
+    return;
+  }
+
+  oldT->next = cur;
+  tail = cur;
   length++;
-  cur = NULL;
 }
 
 itemType List2::GetItemH() const{
@@ -61,14 +69,24 @@ itemType List2::GetItemT(){
 }
 
 void List2::DeleteItemH(){
-  node* cur = new node;
-  cur = head->next; // cur = node pointed to by next
-  delete head; // head becomes null
-
-  head = cur; // head is set to cur, all pointers start at cur
-  cur = NULL;
+  node* cur = head->next;
+  delete head;
+  head = cur;
   length--;
 }
+
+void List2::DeleteItemT(){
+  node* cur = head;
+  while(cur->next->next != tail){
+    cur = cur->next;
+  }
+
+  delete tail;
+  tail = cur;
+  length--;
+
+}
+
 
 void List2::Print(){
   node* cur = new node;
