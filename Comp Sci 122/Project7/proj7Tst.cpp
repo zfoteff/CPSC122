@@ -17,7 +17,6 @@ using namespace std;
 
 int main(){
   List2* myList = new List2;
-  List2* myList2 = new List2(myList);
 
   //Adds integers 0,1,2,3,4,5 to tail of list
   cout<<"Test 1: -------------------------------------"<<endl;
@@ -36,6 +35,7 @@ int main(){
 
   // Copies myList into myList2, the adds 4,5 to end of List2 object
   cout<<"Test 3: -------------------------------------"<<endl;
+  List2* myList2 = new List2(myList);
   myList2->PutItemT(4);
   myList2->PutItemT(5);
   myList2->Print();
