@@ -53,6 +53,20 @@ int List2::GetLength() const{
   return length;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void List2::PutItemT(itemType newItem){
   //assigning variables to dummy node
   node* cur = new node;
