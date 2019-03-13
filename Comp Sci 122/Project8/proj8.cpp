@@ -45,8 +45,8 @@ int List3::GetLength() const{
 
 void List3::PutItem(int pos, itemType item){
   node* cur = head;
-  node* newNext = new node;
-  node* insert = new node;
+  node* newNext = new node; // pointer to the node that is being shifted
+  node* insert = new node; // pointer to new node to be added to the list
   insert->item = item;
 
   if(length == 0){ //if it is put at the head
@@ -90,7 +90,6 @@ void List3::DeleteItem(int pos){
   while(loc != pos){
     cur = cur->next;
   }
-
 
 }
 

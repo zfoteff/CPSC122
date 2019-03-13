@@ -4,7 +4,8 @@ Team Member 1: Zac Foteff
 Team Member 2: None
 Submitted by: Zac Foteff
 GU Username: zfoteff
-test file for a linked list with:
+File Name: proj8Tst.cpp
+Test file for a linked list with:
 1) The capacity to copy a list with the copy constructor
 2) The capacity to manipulate a node in any position
 To Build: g++ proj8Tst.cpp proj.cpp
@@ -16,6 +17,7 @@ To Execute: ./a.out
 using namespace std;
 
 int main(){
+  cout<<"Test";
   List3* myList = new List3;
   int length = 5;
 
@@ -23,6 +25,5 @@ int main(){
     myList->PutItem(i, i);
   }
   myList->Print();
-
 
 }
