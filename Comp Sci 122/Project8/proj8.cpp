@@ -107,6 +107,7 @@ node* List3::ptrTo(int pos){
   int loc = 0;
   while(loc != pos){
     cur = cur->next;
+    loc++;
   }
 
   return cur;

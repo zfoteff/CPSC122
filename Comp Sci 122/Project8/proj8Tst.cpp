@@ -12,13 +12,14 @@ To Build: g++ proj8Tst.cpp proj.cpp
 To Execute: ./a.out
 */
 
-#include <iostream>
 #include "proj8.h"
+#include <iostream>
 using namespace std;
 
 int main(){
   cout<<"Test";
   List3* myList = new List3;
+  cout<<"Test2";
   int length = 5;
 
   for(int i = 0; i< length; i++){
