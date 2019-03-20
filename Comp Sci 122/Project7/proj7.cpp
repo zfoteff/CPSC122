@@ -34,7 +34,7 @@ List2::List2(List2* lst){
 
 List2::~List2(){
   node* cur = head;
-  while (cur->next > 0){
+  while (cur->next->item > 0){
     cur = cur->next;
     delete head;
     head = cur;
