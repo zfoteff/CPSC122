@@ -49,29 +49,38 @@ void List3::PutItem(int pos, itemType item){
   node* insert = new node; // pointer to new node to be added to the list
   insert->item = item;
 
-  if(length == 0){ //if it is put at the head
+  if(pos == 0){ //if it is put at the head
     head = insert;
     length++;
     return;
   }
 
   int loc = 0;
-  while(loc != pos){
+  while(loc < pos){
     cur = cur->next;
     loc++;
+
   }
 
-  if(cur->next = NULL){ // if it should be put at the tail
+cout<< "test"<<endl;
+
+  if(cur->next->item = 0){ // if the inserted node should be put in the tail position
+
+      cout<<"Tst"<<endl;
     cur->next = insert;
     insert->next = NULL;
     length++;
+
+    cout<<"End"<<endl;
+    return;
   }
+
+  cout<<"Test"<<endl;
 
   newNext = cur->next;
   cur->next = insert;
   insert->next = newNext;
   length++;
-
 }
 
 itemType List3::GetItem(int pos){

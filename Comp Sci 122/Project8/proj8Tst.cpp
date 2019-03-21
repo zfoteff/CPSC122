@@ -17,9 +17,7 @@ To Execute: ./a.out
 using namespace std;
 
 int main(){
-  cout<<"Test";
-  List3* myList = new List3;
-  cout<<"Test2";
+  List3* myList = new List3();
   int length = 5;
 
   for(int i = 0; i< length; i++){
