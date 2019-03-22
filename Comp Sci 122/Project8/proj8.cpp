@@ -44,43 +44,24 @@ int List3::GetLength() const{
 }
 
 void List3::PutItem(int pos, itemType item){
-  node* cur = head;
+  node* last = new node; // pointer to the node before the specified position
   node* newNext = new node; // pointer to the node that is being shifted
   node* insert = new node; // pointer to new node to be added to the list
   insert->item = item;
 
-  if(pos == 0){ //if it is put at the head
+  if(length == 0 || pos == 0){
     head = insert;
     length++;
     return;
   }
 
-  int loc = 0;
-  while(loc < pos){
-    cur = cur->next;
-    loc++;
+  last = ptrTo(pos-1);
+  newNext = last->next;
 
-  }
-
-cout<< "test"<<endl;
-
-  if(cur->next->item = 0){ // if the inserted node should be put in the tail position
-
-      cout<<"Tst"<<endl;
-    cur->next = insert;
-    insert->next = NULL;
-    length++;
-
-    cout<<"End"<<endl;
-    return;
-  }
-
-  cout<<"Test"<<endl;
-
-  newNext = cur->next;
-  cur->next = insert;
+  last->next = insert;
   insert->next = newNext;
   length++;
+
 }
 
 itemType List3::GetItem(int pos){
@@ -94,11 +75,37 @@ itemType List3::GetItem(int pos){
 }
 
 void List3::DeleteItem(int pos){
-  node* cur = head;
-  int loc = 0;
-  while(loc != pos){
-    cur = cur->next;
+  node* last = new node;
+  node* newNext = new node;
+  node* cur = new node;
+
+  if(pos == 0){
+    if(length == 1)
+      delete head;
+    last = head;
+    head = last->next;
+    delete last;
+    length--;
   }
+
+  if(pos == length){
+    last = ptrTo(length-1);
+    cur = last->next;
+    delete cur;
+    last->next = NULL;
+    length--;
+    return;
+  }
+
+  last = ptrTo(pos-1);
+  cur = last->next;
+  newNext = cur->next;
+
+  delete cur;
+  last->next = newNext;
+  length--;
+
+
 
 }
 
