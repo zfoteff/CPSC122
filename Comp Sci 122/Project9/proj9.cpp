@@ -58,12 +58,11 @@ void List4::Insert(itemType item, int pos){
     length++;
   }
 
-  old = FindPos(pos-1);
+  old = FindPosition(pos-1);
   old->next = ins;
   ins->prev = old;
   ins->next = old->next->next;
   length++;
-
 }
 
 void List4::Delete(int pos){
@@ -90,4 +89,31 @@ doubleNode* List4::FindPosition(int pos){
   }
 
   return cur;
+}
+
+void List4::PrintForward(){
+  doubleNode* cur = head;
+  while(cur != NULL){
+    cout<<cur->item<<endl;
+    cur = cur->next;
+  }
+}
+
+void List4::PrintBackwards(){
+  doubleNode* cur = tail;
+  int x = 0;
+  do{
+    cout<<cur->item<<endl;
+    cur = cur->prev;
+  }
+  while(x < length);
+}
+
+void List4::Sort(){
+  doubleNode* cur = new doubleNode;
+  int numList[length];
+  for(int i = 0; cur != NULL; i++){
+    numList[i] = cur->item;
+    cur= cur->next;
+    }
 }

@@ -16,6 +16,12 @@ using namespace std;
 
 int main(){
   List4* myList = new List4();
+  for(int i = 1; i<= 3; i++){
+    myList->Insert(i,i);
+  }
+  myList->PrintForward();
+  myList->PrintBackwards();
+
 
   return 0;
 }
