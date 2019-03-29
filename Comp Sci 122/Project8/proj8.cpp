@@ -49,7 +49,16 @@ void List3::PutItem(int pos, itemType item){
   node* insert = new node; // pointer to new node to be added to the list
   insert->item = item;
 
-  if(length == 0 || pos == 0){
+  if(length == 0){
+    head = insert;
+    insert->next = NULL;
+    length++;
+    return;
+  }
+
+  if(pos == 0){
+    last = head;
+    insert->next = last;
     head = insert;
     length++;
     return;

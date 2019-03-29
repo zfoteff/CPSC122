@@ -20,6 +20,7 @@ int main(){
     myList->Insert(i,i);
   }
   myList->PrintForward();
+  cout<<endl;
   myList->PrintBackwards();
 
 
