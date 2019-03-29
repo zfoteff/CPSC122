@@ -56,6 +56,7 @@ void List4::Insert(itemType item, int pos){
   if(pos == length+1){
     old = tail;
     old->next = ins;
+    ins->prev = old;
     tail = ins;
     length++;
     return;
