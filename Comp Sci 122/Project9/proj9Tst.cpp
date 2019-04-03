@@ -16,12 +16,17 @@ using namespace std;
 
 int main(){
   List4* myList = new List4();
-  for(int i = 1; i<= 3; i++){
+  for(int i = 1; i<= 7; i++){
     myList->Insert(i,i);
   }
+  //myList->Insert(1, 4);
   myList->PrintForward();
   cout<<endl;
   myList->PrintBackwards();
+  cout<<endl;
+  myList->DeleteItem(6);
+  cout<<endl;
+  myList->PrintForward();
 
 
   return 0;

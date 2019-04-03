@@ -35,7 +35,7 @@ void List4::Insert(itemType item, int pos){
   doubleNode* old = new doubleNode;
   ins->item = item;
 
-  if(length == 0){
+  if(length == 0){ // List empty
     head = ins;
     tail = ins;
     ins->next = NULL;
@@ -44,7 +44,7 @@ void List4::Insert(itemType item, int pos){
     return;
   }
 
-  if(pos == 1){
+  if(pos == 1){ // Insert at head
     old = head;
     old->prev = ins;
     head = ins;
@@ -53,7 +53,7 @@ void List4::Insert(itemType item, int pos){
     return;
   }
 
-  if(pos == length+1){
+  if(pos == length+1){ // Insert at head
     old = tail;
     old->next = ins;
     ins->prev = old;
@@ -83,6 +83,42 @@ void List4::Delete(int pos){
   length--;
 }
 
+int List4::DeleteItem(itemType item){
+  int count = 0;
+  doubleNode* cur = head;
+  doubleNode* temp = new doubleNode;
+  while(cur->next != NULL){
+    if(cur->item = item){
+      if(cur->prev == NULL){ // if item is found in the head node
+        temp = cur->next;
+        temp->prev = NULL;
+        head = temp;
+        delete cur;
+        length--;
+        count++;
+      }
+
+      if(cur->next == NULL){ // if item is found in the tail node
+        temp = cur->prev;
+        temp->next = NULL;
+        tail = temp;
+        delete cur;
+        length--;
+        count++;
+      }
+
+      else{
+        temp = cur->next;
+        temp->prev = cur->prev;
+        delete cur;
+        length--;
+        count++;
+      }
+    }
+    cur = cur->next;
+  }
+  return count;
+}
 
 doubleNode* List4::FindPosition(int pos){
   int truePos = pos-1;
