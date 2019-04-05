@@ -16,47 +16,54 @@ To Execute: ./a.out
 #include "proj8.h"
 using namespace std;
 
-List3::List3(){
+List3::List3()
+{
   length = 0;
   head = NULL;
 }
 
-List3::List3(List3* lst){
+List3::List3(List3* lst)
+{
   node* lstCur = new node; // list object that is being copied into declared list
   lstCur->item = lst->head->item;
   lstCur->next = lst->head->next;
 
-  for(int i = 0; lstCur != NULL; i++){
+  for(int i = 0; lstCur != NULL; i++)
+  {
     PutItem(i, lstCur->item);
     lstCur = lstCur->next;
   }
 }
 
-bool List3::IsEmpty() const{
-  if(head == NULL){
+bool List3::IsEmpty() const
+{
+  if(head == NULL)
     return true;
-  }
   return false;
 }
 
-int List3::GetLength() const{
+int List3::GetLength() const
+{
   return length;
 }
 
-void List3::PutItem(int pos, itemType item){
+void List3::PutItem(int pos, itemType item)
+{
   node* last = new node; // pointer to the node before the specified position
   node* newNext = new node; // pointer to the node that is being shifted
   node* insert = new node; // pointer to new node to be added to the list
   insert->item = item;
 
-  if(length == 0){
+  if(length == 0)
+  {
     head = insert;
     insert->next = NULL;
     length++;
     return;
   }
 
-  if(pos == 0){
+  if(pos == 0)
+  {
     last = head;
     insert->next = last;
     head = insert;
@@ -73,31 +80,37 @@ void List3::PutItem(int pos, itemType item){
 
 }
 
-itemType List3::GetItem(int pos){
+itemType List3::GetItem(int pos)
+{
   node* cur = head;
   int loc = 0;
-  while(loc != pos){
+  while(loc != pos)
+  {
     cur = cur->next;
   }
 
   return cur->item;
 }
 
-void List3::DeleteItem(int pos){
+void List3::DeleteItem(int pos)
+{
   node* last = new node;
   node* newNext = new node;
   node* cur = new node;
 
-  if(pos == 0){
+  if(pos == 0)
+  {
     if(length == 1)
       delete head;
-    last = head;
-    head = last->next;
-    delete last;
+    cur = head;
+    head = cur->next;
+    delete cur;
     length--;
+    return;
   }
 
-  if(pos == length){
+  if(pos == length)
+  {
     last = ptrTo(length-1);
     cur = last->next;
     delete cur;
@@ -113,21 +126,21 @@ void List3::DeleteItem(int pos){
   delete cur;
   last->next = newNext;
   length--;
-
-
-
 }
 
-void List3::Print(){
+void List3::Print()
+{
   node* cur = new node;
   cur = head;
-  while(cur != NULL){
+  while(cur != NULL)
+  {
     cout<<cur->item<<endl; // output item stored in cur node
     cur = cur->next; //sets cur equal to the node it points to/ next node
   }
 }
 
-node* List3::ptrTo(int pos){
+node* List3::ptrTo(int pos)
+{
   node* cur = head;
   int loc = 0;
   while(loc != pos){

@@ -25,13 +25,15 @@ int main(){
   for(int i = 0; i< length; i++){
     myList->PutItem(i, i);
   }
-  myList->Print(); // print full list
+  //myList->Print(); // print full list
   cout<<endl<<endl;
-  myList->DeleteItem(3); // delete item in 3rd index
-  myList->Print(); //print new list
+  myList->DeleteItem(3); // delete
   cout<<endl<<endl;
   List3* myList2 = new List3(myList);
-  myList2->Print(); // print copied list
+//  myList2->Print(); // print copied list
+  myList2->PutItem(0,5);
+  myList2->PutItem(5, 5);
+  myList2->Print();
 
 
 
