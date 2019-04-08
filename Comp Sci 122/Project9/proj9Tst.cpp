@@ -24,7 +24,7 @@ int main(){
   cout<<endl;
   myList->PrintBackwards();
   cout<<endl;
-  myList->DeleteItem(6);
+  myList->Delete(4);
   cout<<endl;
   myList->PrintForward();
 

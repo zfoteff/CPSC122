@@ -74,12 +74,26 @@ void List4::Delete(int pos){
   doubleNode* cur = FindPosition(pos);
   doubleNode* last = cur->prev;
   doubleNode* next = cur->next;
-  next->prev = last;
-  last->next = next;
 
+  if(cur = head){
+    head = next;
+    next->prev = NULL;
+    delete cur;
+    length--;
+    return;
+  }
+
+  if(cur = tail){
+    tail = last;
+    last->next = NULL;
+    length--;
+    delete cur;
+    return;
+  }
+
+  last->next = next;
+  next->prev = last;
   delete cur;
-  delete last;
-  delete next;
   length--;
 }
 
