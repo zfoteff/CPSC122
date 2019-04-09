@@ -20,7 +20,7 @@ class Calc
   /*
   pre: none
   post: instance of calculator created. valid in-fix expression stored in
-        inFix. symbolTlble create
+        inFix. symbolTlble created
         symbolTble created
   */
   Calc();
@@ -38,8 +38,8 @@ class Calc
   post: 1) command line input has been a) checked for balanced parentheses
         b) checked for valid input. 2) symbolTble has been constructed
 	3) inFix holds a valid in fix expression
-  void Parse(char* cmdLineInp[], int num_cmd_line_args)
   */
+  void Parse(char* cmdLineInp[], int num_cmd_line_args);
 
   /*
   pre:  instance of calculator exists
@@ -60,5 +60,6 @@ class Calc
   char* inFix;    //null-terminated string that holds infix expression
   char* postFix;  //null-terminated string that holds the post-fix
   int* symbolTble; //pointer to symbolTable holding expression values
+  int size; //integer value for the size of the expression
 };
 #endif
