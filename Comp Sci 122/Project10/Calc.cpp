@@ -14,9 +14,9 @@ To Execute: ./a.out
 #include <iostream>
 using namespace std;
 
-Calc::Calc()
+Calc::Calc(int numArgs, char* cmdLine[])
 {
-  Parse(char* argv[], int argc);
+  Parse(cmdLine, numArgs);
 }
 
 void Calc::DisplayInFix()
@@ -33,26 +33,40 @@ void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
   }
   inFix[i] = '\0';
 
+
+
   //balenced parentheses check
   if(!CheckParens())
+  {
     cout<<"Please make sure your parentheses are balenced"<<endl;
     exit(0);
+  }
+
+  //legal token check
+  if(!CheckTokens())
+    exit(0);
+
+  //hash table construction
+  CreateHash(symbolTble, inFix)
+  {
+
+  }
 }
 
-bool Calc::CheckTokens()
+bool Calc::CheckTokens(char* exp)
 {
 
 }
 
 bool Calc::CheckParens()
 {
-  /*for(char ch : inFix){
+  for(char ch : inFix){
     if(ch == '(')
       stk->Push(ch);
     if(ch == ')')
       stk->Pop();
   }
-
   return stk->IsEmpty();
-  */
 }
+
+void CreateHash()

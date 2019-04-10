@@ -23,7 +23,7 @@ class Calc
         inFix. symbolTlble created
         symbolTble created
   */
-  Calc();
+  Calc(int numArgs, char* cmdLine[]);
 
   /*
   pre: instance of calculator exists.
@@ -47,7 +47,7 @@ class Calc
         false otherwise  Legal characters are ')', '(', '+','-','*','/',
         'A' ... 'Z'
   */
-  bool CheckTokens();
+  bool CheckTokens(char* exp);
 
   /*
    pre:  instance of calculator exists and all input tokens are legal
@@ -55,6 +55,13 @@ class Calc
          are balanced, false otherwise
   */
   bool CheckParens();
+
+  /*
+  pre: instance of calculator exists, the parentheses are balenced, and all
+       tokens are legal
+  post: a hash table is constructed using the variables in exp
+  */
+  void CreateHash(int* hashTable, char* exp);
 
   Stack* stk;
   char* inFix;    //null-terminated string that holds infix expression
