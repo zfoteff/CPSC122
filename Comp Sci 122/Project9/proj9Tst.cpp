@@ -19,7 +19,7 @@ int main(){
   for(int i = 1; i<= 7; i++){
     myList->Insert(i,i);
   }
-  //myList->Insert(1, 4);
+  //myList->Insert(4, 1);
   myList->PrintForward();
   cout<<endl;
   myList->PrintBackwards();

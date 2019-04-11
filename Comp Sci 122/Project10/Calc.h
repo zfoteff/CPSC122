@@ -61,7 +61,7 @@ class Calc
        tokens are legal
   post: a hash table is constructed using the variables in exp
   */
-  void CreateHash(int* hashTable, char* exp);
+  void CreateHash(int* hashTable, char* exp, int numArgs, char* cmdLine[]);
 
   Stack* stk;
   char* inFix;    //null-terminated string that holds infix expression
