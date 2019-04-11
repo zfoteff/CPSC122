@@ -25,6 +25,10 @@ int main(){
   myList->PrintBackwards();
   cout<<endl;
   myList->Delete(4);
+  myList->PrintForward();
+  //myList->Insert(3, 6);
+  cout<<endl;
+  cout<<myList->DeleteItem(3);
   cout<<endl;
   myList->PrintForward();
 

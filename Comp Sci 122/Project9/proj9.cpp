@@ -71,66 +71,32 @@ void List4::Insert(itemType item, int pos){
 }
 
 void List4::Delete(int pos){
-  doubleNode* cur = FindPosition(pos);
-  doubleNode* last = cur->prev;
-  doubleNode* next = cur->next;
+  doubleNode* cur = FindPosition(pos-1);
+  doubleNode* next = cur->next->next;
 
-  if(cur = head){
-    head = next;
-    next->prev = NULL;
-    delete cur;
-    length--;
-    return;
-  }
-
-  if(cur = tail){
-    tail = last;
-    last->next = NULL;
-    length--;
-    delete cur;
-    return;
-  }
-
-  last->next = next;
-  next->prev = last;
-  delete cur;
+  delete cur->next;
+  cur->next = next;
+  next->prev = cur;
   length--;
 }
 
-int List4::DeleteItem(itemType item){
+int List4::DeleteItem(itemType item)
+{
   int count = 0;
   doubleNode* cur = head;
-  doubleNode* temp = new doubleNode;
-  while(cur->next != NULL){
-    if(cur->item = item){
-      if(cur->prev == NULL){ // if item is found in the head node
-        temp = cur->next;
-        temp->prev = NULL;
-        head = temp;
-        delete cur;
-        length--;
-        count++;
-      }
+  doubleNode* insA = cur->next->next;;
+  for(int i = 1; i< length; i++)
+  {
+    if(cur->item == item)
+    {
 
-      if(cur->next == NULL){ // if item is found in the tail node
-        temp = cur->prev;
-        temp->next = NULL;
-        tail = temp;
-        delete cur;
-        length--;
-        count++;
-      }
+      Delete(i);
+      count++;
 
-      else{
-        temp = cur->next;
-        temp->prev = cur->prev;
-        delete cur;
-        length--;
-        count++;
-      }
     }
     cur = cur->next;
   }
+
   return count;
 }
 
