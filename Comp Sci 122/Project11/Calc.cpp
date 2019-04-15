@@ -50,7 +50,9 @@ void Calc::DisplayPostFix()
 }
 
 void Calc::InFixToPostFix()
-{}
+{
+  postFix = "";
+}
 
 void Calc::Evaluate()
 {}
