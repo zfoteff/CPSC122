@@ -1,3 +1,14 @@
+/*
+Class: CPSC 122-01
+Zac Foteff
+GU Username: zfoteff
+Submitted By: Zac Foteff
+File Name: Calc.cpp
+Function file for class Calc
+To Build: g++ CalcTst.cpp Calc.cpp
+To Execute: ./calc "(A+B) 7 12
+*/
+
 #include <iostream>
 #include <cstring>
 #include "Calc.h"
