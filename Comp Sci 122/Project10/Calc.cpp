@@ -16,6 +16,7 @@ using namespace std;
 
 Calc::Calc(int numArgs, char* cmdLine[])
 {
+  stk = NULL;
   Parse(cmdLine, numArgs);
 }
 
