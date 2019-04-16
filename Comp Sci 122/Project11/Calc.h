@@ -63,7 +63,7 @@ class Calc
   pre:  invoked from constructor
   post: processes raw input
   */
-  void Parse(char* cmdLineInp[], int num_cmd_line_args);
+  void Parse(char* cmdLineInp[], int num_cmd_line_args); //DONE
 
   /*
   pre:  instance of calculator exists

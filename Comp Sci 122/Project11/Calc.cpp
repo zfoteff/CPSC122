@@ -57,8 +57,31 @@ void Calc::InFixToPostFix()
 void Calc::Evaluate()
 {}
 
-void Parse(char* cmdLineInp[], int num_cmd_line_args)
-{}
+void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
+{
+  //inFix expression construction
+  int size = strlen(myArgv[1]);
+  inFix = new char[size+1];
+  int i;
+
+  for(i = 0; i< size; i++)
+    inFix[i] = myArgv[1][i];
+  inFix[i] = '\0';
+
+  //balenced parentheses check
+  if(!CheckParens())
+  {
+    cout<<"Please make sure your parentheses are balenced"<<endl;
+    exit(0);
+  }
+
+  //legal token check
+  if(!CheckTokens())
+    exit(0);
+
+  //hash table constructions
+  CreateHash(hashTble, inFix, myArgc, myArgv);
+}
 
 bool Calc::CheckTokens()
 {
@@ -79,7 +102,8 @@ bool Calc::CheckTokens()
       {
         if(inFix[i] >= 65 && inFix[i] <= 90)
           ret = true;
-        else{
+        else
+        {
           cout<<inFix[i]<<" is not a valid character."<<endl;
           return false;
         }
@@ -92,7 +116,8 @@ bool Calc::CheckTokens()
 
 bool Calc::CheckParens()
 {
-  for(int i = 0; inFix[i] != '\0'; i++){
+  for(int i = 0; inFix[i] != '\0'; i++)
+  {
     if(inFix[i] == '(')
       stk->Push(inFix[i]);
     if(inFix[i] == ')')
@@ -105,8 +130,10 @@ void Calc::CreateHash(int* hashTable, char* exp, int numArgs, char* cmdLine[])
 {
   hashTble = new int[26];
   int cmdLineArg = 2;
-  for(int i = 0; inFix[i] != '\0'; i++){
-    if(inFix[i] >= 65 && inFix[i] <= 90){ // while the character is a capital letter A-Z
+  for(int i = 0; inFix[i] != '\0'; i++)
+  {
+    if(inFix[i] >= 65 && inFix[i] <= 90)
+    { // while the character is a capital letter A-Z
       hashTable[inFix[i] % 65] = atoi(cmdLine[cmdLineArg]);
       cmdLineArg++;
     }
