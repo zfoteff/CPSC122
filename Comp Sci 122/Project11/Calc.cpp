@@ -33,6 +33,9 @@ Calc::Calc(int argCIn, char* argvIn[])
   }
 
   Parse(myArgv, myArgc);
+  InFixToPostFix();
+  DisplayInFix();
+  DisplayPostFix();
 }
 
 void Calc::DisplayInFix()
@@ -51,7 +54,34 @@ void Calc::DisplayPostFix()
 
 void Calc::InFixToPostFix()
 {
-  postFix = "";
+  postFix = new char[strlen(inFix)+1];
+  int postFixCnt = 0;
+
+  for(int i = 0; inFix[i] != '\0'; i++)
+  {
+    if(inFix[i] <= 65 || inFix[i] >= 90)
+    { // if it is operand copy to postFix
+      postFix[postFixCnt] = inFix[i];
+      postFixCnt++;
+    }
+
+    if(inFix[i] == ')')
+    { // if it is closed parentheses add operators to stk until open parentheses is reached
+      while(stk->Peek() != '(')
+      {
+        postFix[postFixCnt] = stk->Peek();
+        stk->Pop();
+        postFixCnt++;
+      }
+
+      stk->Pop(); //pop open parentheses
+    }
+
+    else // if operator push to stack
+      stk->Push(inFix[i]);
+  }
+
+  postFix[postFixCnt+1] = '\0';
 }
 
 void Calc::Evaluate()
@@ -59,6 +89,7 @@ void Calc::Evaluate()
 
 void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
 {
+
   //inFix expression construction
   int size = strlen(myArgv[1]);
   inFix = new char[size+1];
@@ -76,11 +107,12 @@ void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
   }
 
   //legal token check
-  if(!CheckTokens())
-    exit(0);
+  //if(!CheckTokens())
+    //exit(0);
 
   //hash table constructions
   CreateHash(hashTble, inFix, myArgc, myArgv);
+  cout<<"Test"<<endl;
 }
 
 bool Calc::CheckTokens()
@@ -116,6 +148,7 @@ bool Calc::CheckTokens()
 
 bool Calc::CheckParens()
 {
+  stk = new Stack;
   for(int i = 0; inFix[i] != '\0'; i++)
   {
     if(inFix[i] == '(')
@@ -134,8 +167,12 @@ void Calc::CreateHash(int* hashTable, char* exp, int numArgs, char* cmdLine[])
   {
     if(inFix[i] >= 65 && inFix[i] <= 90)
     { // while the character is a capital letter A-Z
+      cout<<"Test1"<<endl;
       hashTable[inFix[i] % 65] = atoi(cmdLine[cmdLineArg]);
-      cmdLineArg++;
+      cout<<"Test2"<<endl;
+      //cmdLineArg++;
     }
   }
+
+  cout<<"Test2"<<endl;
 }
