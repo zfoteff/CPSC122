@@ -36,7 +36,7 @@ Calc::Calc(int argCIn, char* argvIn[])
   InFixToPostFix(); // change infix expression to postfix expression
   DisplayInFix(); //TEST
   DisplayPostFix(); // TEST
-//  Evaluate(); // evaluate and return result
+  Evaluate(); // evaluate and return result
 }
 
 void Calc::DisplayInFix()
@@ -56,34 +56,39 @@ void Calc::DisplayPostFix()
 void Calc::InFixToPostFix()
 {
   postFix = new char[strlen(inFix)+1];
-  int postFixCnt = 0;
-
-  for(int i = 0; inFix[i] != '\0'; i++)
+  int postFixCount = 0;
+  int i;
+  for(i = 0; inFix[i] != '\0'; i++)
   {
-    if(inFix[i] <= 65 && inFix[i] >= 90)
-    { // if it is operand copy to postFix
-      postFix[postFixCnt] = inFix[i];
-      postFixCnt++;
-    }
 
-    else if(inFix[i] == ')')
-    { // if it is closed parentheses add operators to stk until open parentheses is reached
-      while(stk->Peek() != '(')
-      {
-        postFix[postFixCnt] = stk->Peek();
-        stk->Pop();
-        postFixCnt++;
-      }
-      stk->Pop(); //pop open parentheses
-    }
+    const char ch = inFix[i]; //operands
+    switch(ch)
+    {
+      case '(': case '+': case '-': case '/': case '*': //operators
+          stk->Push(ch);
+          break;
 
-    else // if operator push to stack
-      stk->Push(inFix[i]);
+
+      case ')':
+          while(!stk->IsEmpty() && stk->Peek() != '(')
+          {
+            postFix[postFixCount] = stk->Peek();
+            stk->Pop();
+            postFixCount++;
+          }
+          break;
+
+
+      default:
+          postFix[postFixCount] = inFix[i];
+          postFixCount++;
+          break;
+    }
   }
 
-  postFix[postFixCnt+1] = '\0';
+  postFix[i] = '\0';
 }
-/*
+
 void Calc::Evaluate()
 {
   stk = new Stack;
@@ -100,17 +105,26 @@ void Calc::Evaluate()
       stk->Pop();
       int op2 = stk->Peek();
       stk->Pop();
-      int optr = atoi(postFix[i]);
+      char optr = postFix[i];
 
-      result = op1 optr op2;
+      if(optr = '+')
+        result = (op1)+(op2);
+      else if(optr = '-')
+        result = (op1)-(op2);
+      else if(optr = '/')
+        result = (op1)/(op2);
+      else if(optr = '*')
+        result = (op1)*(op2);
+
       stk->Push(result);
+      cout<<result<<endl;
     }
   }
   final = stk->Peek();
   stk->Pop();
   cout<<"The expression evaluates to "<<final<<endl;
 }
-*/
+
 void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
 {
 
@@ -131,8 +145,8 @@ void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
   }
 
   //legal token check
-  if(!CheckTokens())
-    exit(0);
+  //if(!CheckTokens())
+  //  exit(0);
 
   //hash table constructions
   CreateHash();
