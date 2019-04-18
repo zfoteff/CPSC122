@@ -145,8 +145,8 @@ void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
   }
 
   //legal token check
-  //if(!CheckTokens())
-  //  exit(0);
+  if(!CheckTokens())
+    exit(0);
 
   //hash table constructions
   CreateHash();
@@ -165,17 +165,15 @@ bool Calc::CheckTokens()
 
   for(int i = 0; i < strlen(inFix); i++)
   {
-    for(char ch: symbol)
+    for(int j = 0; j < 6; j++)
     {
-      if(inFix[i] != ch)
+      if(inFix[i] != symbol[j])
+        ret = false;
+
+      else if(inFix[i] == symbol[j])
       {
-        if(inFix[i] >= 65 && inFix[i] <= 90)
-          ret = true;
-        else
-        {
-          cout<<inFix[i]<<" is not a valid character."<<endl;
-          return false;
-        }
+        ret = true;
+        break;
       }
     }
   }
