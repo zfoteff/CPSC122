@@ -32,10 +32,11 @@ Calc::Calc(int argCIn, char* argvIn[])
     strcpy(myArgv[i],argvIn[i]);
   }
 
-  Parse(myArgv, myArgc);
-  InFixToPostFix();
-  DisplayInFix();
-  DisplayPostFix();
+  Parse(myArgv, myArgc); // set variables
+  InFixToPostFix(); // change infix expression to postfix expression
+  DisplayInFix(); //TEST
+  DisplayPostFix(); // TEST
+//  Evaluate(); // evaluate and return result
 }
 
 void Calc::DisplayInFix()
@@ -59,13 +60,13 @@ void Calc::InFixToPostFix()
 
   for(int i = 0; inFix[i] != '\0'; i++)
   {
-    if(inFix[i] <= 65 || inFix[i] >= 90)
+    if(inFix[i] <= 65 && inFix[i] >= 90)
     { // if it is operand copy to postFix
       postFix[postFixCnt] = inFix[i];
       postFixCnt++;
     }
 
-    if(inFix[i] == ')')
+    else if(inFix[i] == ')')
     { // if it is closed parentheses add operators to stk until open parentheses is reached
       while(stk->Peek() != '(')
       {
@@ -73,7 +74,6 @@ void Calc::InFixToPostFix()
         stk->Pop();
         postFixCnt++;
       }
-
       stk->Pop(); //pop open parentheses
     }
 
@@ -83,10 +83,34 @@ void Calc::InFixToPostFix()
 
   postFix[postFixCnt+1] = '\0';
 }
-
+/*
 void Calc::Evaluate()
-{}
+{
+  stk = new Stack;
+  int final;
+  for(int i = 0; postFix[i] != '\0'; i++)
+  {
+    int result = 0;
+    if(postFix[i] >= 65 && postFix[i] <= 90) //is operand
+      stk->Push(hashTble[postFix[i] % 65]);
 
+    else // is operator
+    {
+      int op1 = stk->Peek();
+      stk->Pop();
+      int op2 = stk->Peek();
+      stk->Pop();
+      int optr = atoi(postFix[i]);
+
+      result = op1 optr op2;
+      stk->Push(result);
+    }
+  }
+  final = stk->Peek();
+  stk->Pop();
+  cout<<"The expression evaluates to "<<final<<endl;
+}
+*/
 void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
 {
 
@@ -107,12 +131,11 @@ void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
   }
 
   //legal token check
-  //if(!CheckTokens())
-    //exit(0);
+  if(!CheckTokens())
+    exit(0);
 
   //hash table constructions
-  CreateHash(hashTble, inFix, myArgc, myArgv);
-  cout<<"Test"<<endl;
+  CreateHash();
 }
 
 bool Calc::CheckTokens()
@@ -153,26 +176,32 @@ bool Calc::CheckParens()
   {
     if(inFix[i] == '(')
       stk->Push(inFix[i]);
-    if(inFix[i] == ')')
-      stk->Pop();
+    else
+    {
+      if(inFix[i] == ')')
+      {
+        if(!stk->IsEmpty()) // while stk isnt empty
+          stk->Pop();
+        else //if stack is empty return false immidiately
+          return false;
+      }
+    }
   }
   return stk->IsEmpty();
 }
 
-void Calc::CreateHash(int* hashTable, char* exp, int numArgs, char* cmdLine[])
+void Calc::CreateHash()
 {
   hashTble = new int[26];
   int cmdLineArg = 2;
+
   for(int i = 0; inFix[i] != '\0'; i++)
   {
     if(inFix[i] >= 65 && inFix[i] <= 90)
-    { // while the character is a capital letter A-Z
-      cout<<"Test1"<<endl;
-      hashTable[inFix[i] % 65] = atoi(cmdLine[cmdLineArg]);
-      cout<<"Test2"<<endl;
-      //cmdLineArg++;
+    {
+      hashTble[inFix[i] % 65] = atoi(myArgv[cmdLineArg]);
+      if(cmdLineArg < myArgc)
+        cmdLineArg++;
     }
   }
-
-  cout<<"Test2"<<endl;
 }

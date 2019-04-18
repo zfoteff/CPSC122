@@ -71,21 +71,21 @@ class Calc
         false otherwise  Legal characters are ')', '(', '+','-','*','/',
         'A' ... 'Z'
   */
-  bool CheckTokens(); //DONE
+  bool CheckTokens();
 
   /*
    pre:  instance of calculator exists and all input tokens are legal
    post: Using the technique discussed in class, returns true if parentheses
          are balanced, false otherwise
   */
-  bool CheckParens(); //DONE
+  bool CheckParens();
 
   /*
   pre: instance of calculator exists, the parentheses are balenced, and all
        tokens are legal
   post: a hash table is constructed using the variables in exp
   */
-  void CreateHash(int* hashTable, char* exp, int numArgs, char* cmdLine[]); // DONE
+  void CreateHash();
 
   Stack* stk;
   char*  inFix;    //null-terminated string that holds infix expression
