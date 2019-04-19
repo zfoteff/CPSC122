@@ -47,7 +47,7 @@ class Calc
         false otherwise  Legal characters are ')', '(', '+','-','*','/',
         'A' ... 'Z'
   */
-  bool CheckTokens(char* exp);
+  bool CheckTokens();
 
   /*
    pre:  instance of calculator exists and all input tokens are legal
@@ -61,12 +61,12 @@ class Calc
        tokens are legal
   post: a hash table is constructed using the variables in exp
   */
-  void CreateHash(int* hashTable, char* exp, int numArgs, char* cmdLine[]);
+  void CreateHash(char* myArgv);
 
   Stack* stk;
   char* inFix;    //null-terminated string that holds infix expression
   char* postFix;  //null-terminated string that holds the post-fix
-  int* symbolTble; //pointer to symbolTable holding expression values
+  int* hashTble; //pointer to symbolTable holding expression values
   int size; //integer value for the size of the expression
 };
 #endif

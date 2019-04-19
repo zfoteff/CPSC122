@@ -45,14 +45,14 @@ void Calc::Parse(char* cmdLineInp[], int num_cmd_line_args)
   }
 
   //legal token check
-  if(!CheckTokens(inFix))
+  if(!CheckTokens())
     exit(0);
 
   //hash table construction
-  CreateHash(symbolTble, inFix, num_cmd_line_args, cmdLineInp);
+  CreateHash(cmdLineInp[]);
 }
 
-bool Calc::CheckTokens(char* exp)
+bool Calc::CheckTokens()
 {
   bool ret = true;
   char symbol[6];
@@ -63,18 +63,17 @@ bool Calc::CheckTokens(char* exp)
   symbol[4] = '/';
   symbol[5] = '*';
 
-  for(int i = 0; i < size; i++)
+  for(int i = 0; i < strlen(inFix); i++)
   {
-    for(char ch: symbol)
+    for(int j = 0; j < 6; j++)
     {
-      if(exp[i] != ch)
+      if(inFix[i] != symbol[j])
+        ret = false;
+
+      else if(inFix[i] == symbol[j])
       {
-        if(exp[i] >= 65 && exp[i] <= 90)
-          ret = true;
-        else{
-          cout<<exp[i]<<" is not a valid character."<<endl;
-          return false;
-        }
+        ret = true;
+        break;
       }
     }
   }
@@ -84,23 +83,37 @@ bool Calc::CheckTokens(char* exp)
 
 bool Calc::CheckParens()
 {
-  for(int i = 0; inFix[i] != '\0'; i++){
+  stk = new Stack;
+  for(int i = 0; inFix[i] != '\0'; i++)
+  {
     if(inFix[i] == '(')
       stk->Push(inFix[i]);
-    if(inFix[i] == ')')
-      stk->Pop();
+    else
+    {
+      if(inFix[i] == ')')
+      {
+        if(!stk->IsEmpty()) // while stk isnt empty
+          stk->Pop();
+        else //if stack is empty return false immidiately
+          return false;
+      }
+    }
   }
   return stk->IsEmpty();
 }
 
-void Calc::CreateHash(int* hashTable, char* exp, int numArgs, char* cmdLine[])
+void Calc::CreateHash(char* myArgv)
 {
-  symbolTble = new int[26];
+  hashTble = new int[26];
   int cmdLineArg = 2;
-  for(int i = 0; exp[i] != '\0'; i++){
-    if(exp[i] >= 65 && exp[i] <= 90){ // while the character is a capital letter A-Z
-      hashTable[exp[i] % 65] = atoi(cmdLine[cmdLineArg]);
-      cmdLineArg++;
+
+  for(int i = 0; inFix[i] != '\0'; i++)
+  {
+    if(inFix[i] >= 65 && inFix[i] <= 90)
+    {
+      hashTble[inFix[i] % 65] = atoi(myArgv[cmdLineArg]);
+      if(cmdLineArg < myArgc)
+        cmdLineArg++;
     }
   }
 }
