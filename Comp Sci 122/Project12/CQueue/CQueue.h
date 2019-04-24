@@ -3,20 +3,20 @@ Class: CPSC 122-01
 Zac Foteff
 GU Username: zfoteff
 Submitted By: Zac Foteff
-File Name: CQueue.cpp
+File Name: CQueue.h
 Header file for circular queue implementation with an array
 To Build: g++ CQueue.cpp CQueueTst.cpp
 To Execute: ./a.out
 */
 
-#ifdef CQUEUE_H
+#ifndef CQUEUE_H
 #define CQUEUE_H
+
 typedef int itemType;
 
 class CQueue
 {
   public:
-
   	CQueue(int size); // constructor
   	~CQueue(); // destructor
 

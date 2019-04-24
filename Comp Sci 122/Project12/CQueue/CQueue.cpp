@@ -21,25 +21,27 @@ CQueue::CQueue(int size)
 }
 
 CQueue::~CQueue()
-{}
+{
+  delete q;
+}
 
 bool CQueue::IsEmpty()
 {
-  if(q[front] == NULL)
+  if(q[front] == 0)
     return true;
   return false;
 }
 
 bool CQueue::IsFull()
 {
-  if(q[rear] != NULL)
+  if(q[rear] != 0)
     return true;
   return false;
 }
 
 itemType CQueue::Peek()
 {
-
+  return q[front];
 }
 
 void CQueue::Enqueue(itemType item)
