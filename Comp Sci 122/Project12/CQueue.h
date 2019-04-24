@@ -17,44 +17,42 @@ class CQueue
 {
   public:
 
-    CQueue(int size); // constructor
-    ~CQueue(); // destructor
+  	CQueue(int size); // constructor
+  	~CQueue(); // destructor
 
-    /*
-    pre: instance of CQueue exists
-    post: true is returned if q is empty
-    */
-    bool IsEmpty();
+  	/*
+  	pre: instance of CQueue exists
+  	post: true is returned if q is empty
+  	*/
+  	bool IsEmpty();
 
-    /*
-    pre: instance of CQueue exists
-    post: returns true if q is fully populated
-    */
-    bool IsFull();
+	/*
+ 	pre: instance of CQueue exists
+ 	post: returns true if q is fully populated
+ 	*/
+  	bool IsFull();
 
-    /*
-    pre: instance of CQueue exists and stores at least one item
-    post: item at the head of the queue is returned
-    */
-    itemType Peek();
+  	/*
+  	pre: instance of CQueue exists and stores at least one item
+  	post: item at the head of the queue is returned
+  	*/
+  	itemType Peek();
 
-    /*
-    pre:
-    post:
-    */
-    void Enqueue(itemType item);
+  	/*
+  	pre:
+  	post:
+  	*/
+  	void Enqueue(itemType item);
 
-    /*
-    pre:
-    post:
-    */
-    void Dequeue();
+    	/*
+    	pre:
+    	post:
+  	*/
+	void Dequeue();
 
   private:
-    itemType* q; // queue implemented as an array
-    int front; // index of next item to be dequeued
-    int rear; // index of last queued item
-
-
-}
+  	itemType* q; // queue implemented as an array
+  	int front; // index of next item to be dequeued
+  	int rear; // index of last queued item
+};
 #endif
