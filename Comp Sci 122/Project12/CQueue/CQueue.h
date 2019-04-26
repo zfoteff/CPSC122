@@ -51,9 +51,9 @@ class CQueue
     void Dequeue();
 
   private:
-  	itemType* q; // queue implemented as an array
-  	int front; // index of next item to be dequeued
-  	int rear; // index of last queued item
-    int max_size;
+  	itemType* q;  // queue implemented as an array
+  	int front;    // index of next item to be dequeued
+  	int rear;     // index of last queued item
+    int max_size; // maximum size of the queue
 };
 #endif

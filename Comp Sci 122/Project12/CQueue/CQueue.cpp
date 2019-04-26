@@ -62,15 +62,16 @@ void CQueue::Enqueue(itemType item)
   else
   {
     cout<<"Full"<<endl;
-    return 0;
+    return;
   }
 }
 
 void CQueue::Dequeue()
 {
-  if(!IsFull())
+  if(!IsEmpty())
   {
-    item
+    q[front] = 0;
+    front = (front+1) % max_size;
   }
 
   else
