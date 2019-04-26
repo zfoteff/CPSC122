@@ -15,6 +15,7 @@ using namespace std;
 
 CQueue::CQueue(int size)
 {
+  max_size = size;
   q = new itemType[size];
   front = 0;
   rear = size-1;
@@ -45,7 +46,36 @@ itemType CQueue::Peek()
 }
 
 void CQueue::Enqueue(itemType item)
-{}
+{
+  if(!IsFull())
+  {
+    if(IsEmpty())
+    {
+      q[front] = item;
+      return;
+    }
+
+    rear = (rear+1) % max_size;
+    q[rear] = item;
+  }
+
+  else
+  {
+    cout<<"Full"<<endl;
+    return 0;
+  }
+}
 
 void CQueue::Dequeue()
-{}
+{
+  if(!IsFull())
+  {
+    item
+  }
+
+  else
+  {
+    cout<<"Empty"<<endl;
+    return;
+  }
+}

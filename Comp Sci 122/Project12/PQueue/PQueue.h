@@ -30,9 +30,9 @@ class PQueue : public Queue2
   private:
     /*
     pre:  instance of queue exists
-    post: in queue are sorted in decreasing numarial order
+    post: pointer to node before
     */
-    void SelSort();
+    node* FindPos(itemType item);
 };
 
 #endif

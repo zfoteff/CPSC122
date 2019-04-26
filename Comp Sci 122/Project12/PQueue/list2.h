@@ -107,7 +107,8 @@ class List2
    void Print() const;
 
 
- private:
+ protected:
+ //private:
    int length; //length of the list
    node* head; //points to the first node on the list
    node* tail; //points to the last node on the list

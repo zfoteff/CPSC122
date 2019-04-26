@@ -20,10 +20,33 @@ PQueue::PQueue() : Queue2()
 
 void PQueue::EnqueuePty(itemType item)
 {
-  node* cur = new node
+  node* cur = new node;
+  cur->item = item;
+  node* last = FindPos(item);
+
+  if(last = head) //node should be placed in head
+  {
+    head = last;
+    tail = last;
+  }
+
+  //node reassignment
+  last->next = cur;
+  cur->next = last->next->next;
 }
 
-void PQueue::SelSort()
+node* PQueue::FindPos(itemType item)
 {
+  if(IsEmpty())
+    return head;
+  node* cur = head;
 
+  for(int i = 0; cur->next != NULL; i++)
+  {
+    if(cur->item <= item) //orders them from least to greatest
+      return cur;
+
+    cur = cur->next;
+  }
+  return tail;
 }

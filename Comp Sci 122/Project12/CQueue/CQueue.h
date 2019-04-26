@@ -26,10 +26,10 @@ class CQueue
   	*/
   	bool IsEmpty();
 
-	/*
- 	pre: instance of CQueue exists
- 	post: returns true if q is fully populated
- 	*/
+	  /*
+ 	  pre: instance of CQueue exists
+ 	  post: returns true if q is fully populated
+ 	  */
   	bool IsFull();
 
   	/*
@@ -44,15 +44,16 @@ class CQueue
   	*/
   	void Enqueue(itemType item);
 
-    	/*
-    	pre:
-    	post:
+    /*
+    pre:
+    post:
   	*/
-	void Dequeue();
+    void Dequeue();
 
   private:
   	itemType* q; // queue implemented as an array
   	int front; // index of next item to be dequeued
   	int rear; // index of last queued item
+    int max_size;
 };
 #endif
