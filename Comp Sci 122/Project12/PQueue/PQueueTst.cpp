@@ -18,9 +18,10 @@ using namespace std;
 int main()
 {
   PQueue* myQueue = new PQueue;
-
   myQueue->EnqueuePty(10);
   myQueue->EnqueuePty(5);
+  cout<<endl;
+  myQueue->Print();
 
   return 0;
 }

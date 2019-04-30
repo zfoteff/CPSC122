@@ -15,5 +15,13 @@ using namespace std;
 
 int main()
 {
+  CQueue* myQueue = new CQueue(10);
+  int x = 0;
+  while(!myQueue->IsFull())
+  {
+    myQueue->Enqueue(x);
+  }
+
+
   return 0;
 }
