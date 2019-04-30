@@ -24,10 +24,11 @@ void PQueue::EnqueuePty(itemType item)
   cur->item = item;
   node* last = FindPos(item);
 
-  if(last = head) //node should be placed in head
+  if(last == head) //node should be placed in head
   {
     head = last;
     tail = last;
+    return;
   }
 
   //node reassignment
@@ -39,8 +40,8 @@ node* PQueue::FindPos(itemType item)
 {
   if(IsEmpty())
     return head;
-  node* cur = head;
 
+  node* cur = head;
   for(int i = 0; cur->next != NULL; i++)
   {
     if(cur->item <= item) //orders them from least to greatest

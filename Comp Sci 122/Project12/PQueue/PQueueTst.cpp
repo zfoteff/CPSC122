@@ -17,5 +17,10 @@ using namespace std;
 
 int main()
 {
+  PQueue* myQueue = new PQueue;
+
+  myQueue->EnqueuePty(10);
+  myQueue->EnqueuePty(5);
+
   return 0;
 }

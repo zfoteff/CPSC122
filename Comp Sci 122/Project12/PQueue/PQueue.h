@@ -3,8 +3,8 @@ Class: CPSC 122-01
 Zac Foteff
 GU Username: zfoteff
 Submitted By: Zac Foteff
-File Name: PQueue.cpp
-Function file for priority queue that inherits from queue
+File Name: PQueue.h
+Header file for priority queue that inherits from queue
 To Build: g++ PQueue.cpp PQueueTst.cpp
 To Execute: ./a.out
 */
