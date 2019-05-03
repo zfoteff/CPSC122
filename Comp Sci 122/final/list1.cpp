@@ -82,5 +82,4 @@ bool List::FindR(itemType item, node* cur)
     while(cur->next != NULL)
       return FindR(item, cur->next);
 
-
 }
