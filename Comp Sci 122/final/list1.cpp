@@ -55,19 +55,21 @@ void List::DeleteItemH()
 
 void List::Print() const
 {
- node* tmp = head;
- while(tmp != NULL)
- {
-  cout << tmp->item << endl;
-  tmp = tmp->next;
+  node* tmp = head;
+  while(tmp != NULL)
+  {
+    cout << tmp->item << endl;
+    tmp = tmp->next;
+  }
 }
 
-bool Find(itemType item)
+bool List::Find(itemType item)
 {
-
+  node* cur = head;
+  return FindR(item, cur);
 }
 
-bool FindR(itemType item, node* cur)
+bool List::FindR(itemType item, node* cur)
 {
     int curItem = cur->item;
     //base cases
