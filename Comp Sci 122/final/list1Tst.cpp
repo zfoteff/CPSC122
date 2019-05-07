@@ -20,10 +20,10 @@ int main()
  bool result;
 
  result = lst->Find(x);
- found(result,x); 
+ found(result,x);
 
  result = lst->Find(y);
- found(result,y); 
+ found(result,y);
 
  return 0;
 }
@@ -31,7 +31,7 @@ int main()
 void found(bool result, itemType item)
 {
  if (result)
-  cout << item << " was found" << endl;
+  cout<< item<< " was found"<< endl;
  else
-  cout << item << " was not found" << endl;
+  cout<< item<< " was not found"<< endl;
 }
