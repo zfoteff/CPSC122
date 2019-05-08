@@ -65,21 +65,19 @@ void List::Print() const
 
 bool List::Find(itemType item)
 {
-  node* cur = head;
+  node* cur = new node;
+  cur = head;
   return FindR(item, cur);
 }
 
 bool List::FindR(itemType item, node* cur)
 {
-    int curItem = cur->item;
-    //base cases
-    if(item == curItem)
-      return true;
-    if(cur->next == NULL)
-      return false;
+  // base case
+  if (cur == NULL)
+    return false;
+  if (cur->item == item)
+    return true;
 
-    //recursive case
-    while(cur->next != NULL)
-      return FindR(item, cur->next);
-
+  //recursive case
+  return FindR(item, cur->next);
 }
